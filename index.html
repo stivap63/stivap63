@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ChatGPT - Пополнение счета</title>
+	<link rel="stylesheet" href="./css/style.css">
+	<script defer src="./js/script.js"></script>
+</head>
+
+<body>
+	<div class="main-wrap">
+		<div class="left-panel">
+			<div class="logo">
+				<img src="./img/logo.svg" alt="ChatGPT Logo">
+				<span class="sys-title" id="sysTitle">ChatGPT Пополнение счета</span>
+			</div>
+			<div class="sys-desc" id="sysDesc">Безопасное и быстрое пополнение счета</div>
+
+			<p></p>
+			<hr>
+			<p></p>
+
+			<div class="step-title" id="stepTitle">Порядок пополнения счета</div>
+			<div class="step-flow" id="stepFlow">
+				<div>1. Войдите в систему и получите accessToken</div>
+				<div>2. Введите CDK</div>
+				<div>3. Проверьте и пополните счет</div>
+			</div>
+
+			<p></p>
+			<hr>
+			<p></p>
+
+			<div class="input-group">
+				<label class="input-label" id="tokenLabel">Введите accesssToken учетной записи:</label>
+
+				<div id="hint">
+					<span id="arrow">▶</span>
+					<span>Как получить?</span>
+				</div>
+				<div id="hint-content">
+					Пожалуйста зайдите в свою
+					<a href="https://chatgpt.com/auth/login" target="_blank">учетную запись </a>
+					ChatGPT, затем перейдите
+					<a href="https://chatgpt.com/api/auth/session" target="_blank">сюда</a>
+					, чтобы получить accessToken, скопируйте все содержимое в поле ввода ниже.
+				</div>
+
+				<input class="input" id="tokenInput" placeholder="Вставить accessToken" autocomplete="off">
+			</div>
+			<div class="input-group">
+				<label class="input-label" id="cdkLabel">Введите CDK код:</label>
+				<input class="input" id="cdkInput" placeholder="Вставить CDK" autocomplete="off">
+			</div>
+			<button class="btn" id="verifyBtn" onclick="verifyCDK()">Проверить CDK</button>
+			<div id="resultMsg"></div>
+
+			<p></p>
+			<hr>
+			<p></p>
+
+			<p class="warning-text">Совет:</p>
+			<p>Если появилось сообщение "Пополнение счета не удалось",
+			измените местоположение IP, откройте браузер в режиме инкогнито и попробуйте снова.</p>
+		</div>
+		<div class="right-panel">
+			<div class="right-title" id="accountInfoTitle">Информация об учетной записи</div>
+			<div class="info-list">
+				<div class="info-row">
+					<span class="info-label" id="emailLabel">Адрес электронной почты: </span>
+					<span class="info-value" id="emailValue">-</span>
+				</div>
+				<div class="info-row">
+					<span class="info-label" id="subLabel">Подписка：</span>
+					<span class="info-value" id="subValue">-</span>
+				</div>
+			</div>
+
+			<p></p>
+			<hr>
+			<p></p>
+
+			<div class="right-title" id="logTitle">Журнал операций</div>
+			<table class="log-table" id="logTable">
+				<thead>
+					<tr>
+						<th>Учетная запись</th>
+						<th>CDK</th>
+						<th>Статус</th>
+					</tr>
+				</thead>
+				<tbody id="logBody">
+					<tr>
+						<td colspan="3">Записей пока нет</td>
+					</tr>
+				</tbody>
+			</table>
+			<button class="btn btn-secondary" id="clearInputBtn" style="margin-top:18px;">
+				Очистить входную информацию
+			</button>
+		</div>
+	</div>
+	<div class="footer">
+		© <span id="year"></span> Официальная система пополнения счета. Все права защищены.<br>
+		Используя сервис, вы соглашаетесь с Условиями предоставления услуг и
+		Политикой конфиденциальности.
+	</div>
+
+	<!-- <div id="flonnect-my-app"></div> -->
+</body>
+
+</html>
